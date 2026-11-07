@@ -208,7 +208,7 @@ function loadAndPlayVideo(seasonNum, epNum) {
   const viewer = document.getElementById('episode-viewer');
 
   viewer.innerHTML = `
-    <h3>${seasonInfo.name} - Episode ${epNum}</h3>
+    <h3>${seasonInfo.name} - Episode${epNum}</h3>
     <div class="video-container" style="position: relative;">
       <!-- Skip Indicator Feedback Badge -->
       <div id="skip-indicator-badge" class="skip-indicator">Skipped <span id="skip-time-target">0:00</span></div>
