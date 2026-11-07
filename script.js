@@ -8,7 +8,7 @@ function getSeasonDetails(seasonNum) {
     case 2:
       return { name: "Beyblade Burst Evolution", folder: "Beyblade Burst Evolution", image: "Photos/Beyblade Burst Evolution.jpg", totalEpisodes: 26, isAvailable: false };
     case 3:
-      return { name: "Beyblade Burst Turbo", folder: "Beyblade Burst Turbo", image: "Photos/Beyblade Burst Turbo.jpg", totalEpisodes: 1, isAvailable: false };
+      return { name: "Beyblade Burst Turbo", folder: "Beyblade Burst Turbo", image: "Photos/Beyblade Burst Turbo.jpg", totalEpisodes: 1, isAvailable: true };
     case 4:
       return { name: "Beyblade Burst Rise", folder: "BEYBLADE BURST RISE", image: "Photos/Beyblade Burst Rise.jpg", totalEpisodes: 26, isAvailable: false };
     case 5:
