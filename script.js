@@ -8,7 +8,7 @@ function getSeasonDetails(seasonNum) {
     case 2:
       return { name: "Beyblade Burst Evolution", folder: "Beyblade Burst Evolution", image: "Photos/Beyblade Burst Evolution.jpg", totalEpisodes: 26, isAvailable: false };
     case 3:
-      return { name: "Beyblade Burst Turbo", folder: "BEYBLADE BURST TURBO", image: "Photos/Beyblade Burst Turbo.jpg", totalEpisodes: 1, isAvailable: true };
+      return { name: "Beyblade Burst Turbo", folder: "BEYBLADE BURST TURBO", image: "Photos/Beyblade Burst Turbo.jpg", totalEpisodes: 1, isAvailable: false };
     case 4:
       return { name: "Beyblade Burst Rise", folder: "BEYBLADE BURST RISE", image: "Photos/Beyblade Burst Rise.jpg", totalEpisodes: 26, isAvailable: false };
     case 5:
@@ -208,7 +208,7 @@ function loadAndPlayVideo(seasonNum, epNum) {
   const viewer = document.getElementById('episode-viewer');
 
   viewer.innerHTML = `
-    <h3>${seasonInfo.name} - Episode${epNum}</h3>
+    <h3>${seasonInfo.name} - Episode ${epNum}</h3>
     <div class="video-container" style="position: relative;">
       <!-- Skip Indicator Feedback Badge -->
       <div id="skip-indicator-badge" class="skip-indicator">Skipped <span id="skip-time-target">0:00</span></div>
