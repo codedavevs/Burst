@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Beyblade Burst.</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="Photos/Beyblade_burst.png" alt="Beyblade Burst Logo" class="nav-logo-img">
+      </div>
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'home')">Home</button>
+        <button class="tab-btn" onclick="scrollToUpdates()">Update Logs</button>
+        <button class="tab-btn" onclick="scrollToGallery()">Photo Gallery</button>
+        <button class="tab-btn" onclick="scrollToSocials()">Social Media</button>
+        <button class="tab-btn" onclick="openTab(event, 'episodes')">Seasons & Episodes</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="container">
+
+    <!-- Home Tab -->
+    <section id="home" class="tab-content active">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-image-container">
+          <img src="Photos/Beyblade.jpg" alt="Background Cover" class="hero-img">
+          <div class="hero-fade-overlay"></div>
+        </div>
+        
+        <div class="hero-text">
+          <span class="badge">Welcome Back</span>
+          <h1>Experience The Next Level</h1>
+          <p>Your central destination for exclusive series streaming, season archives, and official community channels.</p>
+          <div class="hero-btns">
+            <button class="btn btn-primary" onclick="openTab(event, 'episodes')"><i class="fas fa-play"></i> Watch Episodes</button>
+            <button class="btn btn-secondary" onclick="scrollToGallery()">Photo Gallery</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT SECTION -->
+      <div id="about-section-wrapper" class="home-embedded-section">
+        <div class="section-header-title">
+          <h2>About This Website</h2>
+          <p>Your central archive for everything Beyblade Burst — series guides, episode streaming layout, and community news.</p>
+        </div>
+
+        <div class="about-hero-card">
+          <div class="about-hero-text">
+            <h3>The Ultimate Blader Resource</h3>
+            <p>This portal was created to give fans a fast, organized way to navigate through all 7 seasons of Beyblade Burst, stay connected with community channels, and discover episode details seamlessly.</p>
+          </div>
+        </div>
+
+        <div class="series-info-grid" style="margin-top: 1.5rem;">
+          <div class="info-card">
+            <h4><i class="fas fa-fire"></i> Burst System</h4>
+            <p>Tops burst apart into pieces during battle, earning extra points.</p>
+          </div>
+          <div class="info-card">
+            <h4><i class="fas fa-layer-group"></i> 7 Seasons</h4>
+            <p>Quick access to episode rosters arranged season-by-season.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- UPDATE LOGS SECTION -->
+      <div id="updates-section-wrapper" class="home-embedded-section">
+        <div class="section-header-title">
+          <h2>Update Website</h2>
+          <p>Track recent site changes, version notes, bug fixes, and feature additions.</p>
+        </div>
+
+        <div class="update-logs-container">
+          <div class="log-card">
+            <div class="log-header">
+              <span class="log-version">New!</span>
+              <span class="log-date">November 7, 2026</span>
+            </div>
+            <h3>Video Schedule Update And Posting</h3>
+            <ul class="log-list">
+              <li><i class="fas fa-check-circle"></i> Beyblade Burst Turbo on Monday - Nov 9</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEW: PHOTO GALLERY SECTION (Placed above About Website) -->
+      <div id="gallery-section-wrapper" class="home-embedded-section">
+        <div class="section-header-title">
+          <h2>Character Gallery</h2>
+          <p>Check The Photo Collections In every Character on Beyblade Burst Series.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Character 1: Valt Aoi -->
+          <div class="gallery-card">
+            <div class="gallery-img-container">
+              <img src="Photo Galery/Valt Aoi/Valt.jpg" alt="Valt Aoi">
+            </div>
+            <div class="gallery-info">
+              <h3>Valt</h3>
+              <button class="btn btn-primary view-btn" onclick="openLightbox('Photo Galery/Valt Aoi/ Valt Aoi.jpg', 'Valt Aoi')">
+                <i class="fas fa-eye"></i> View
+              </button>
+            </div>
+          </div>
+
+          <!-- Character 2: Shu Kurenai -->
+          <div class="gallery-card">
+            <div class="gallery-img-container">
+              <img src="Photo Galery/Shu Kurenai/Shu.jpg" alt="Shu Kurenai">
+            </div>
+            <div class="gallery-info">
+              <h3>Shu</h3>
+              <button class="btn btn-primary view-btn" onclick="openLightbox('Photo Galery/Shu Kurenai/Shu Kurenai.jpg', 'Shu Kurenai')">
+                <i class="fas fa-eye"></i> View
+              </button>
+            </div>
+          </div>
+
+          <!-- Character 3: Free De La Hoya -->
+          <div class="gallery-card">
+            <div class="gallery-img-container">
+              <img src="Photo Galery/Free De La Hoya/Free.jpg" alt="Free De La Hoya">
+            </div>
+            <div class="gallery-info">
+              <h3>Free</h3>
+              <button class="btn btn-primary view-btn" onclick="openLightbox('Photo Galery/Free De La Hoya/Free De La Hoya.jpg', 'Free De La Hoya')">
+                <i class="fas fa-eye"></i> View
+              </button>
+            </div>
+          </div>
+
+          <!-- Character 4: Silas Karlisle -->
+          <div class="gallery-card">
+            <div class="gallery-img-container">
+              <img src="Photo Galery/Silas Karlisle/Silas.jpg" alt="Silas Karlisle">
+            </div>
+            <div class="gallery-info">
+              <h3>Silas</h3>
+              <button class="btn btn-primary view-btn" onclick="openLightbox('Photo Galery/Silas Karlisle/Silas Karlisle.jpg', 'Silas Karlisle')">
+                <i class="fas fa-eye"></i> View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPLORE ALL 7 SEASONS SECTION -->
+      <div class="seasons-showcase-section">
+        <div class="section-header-title">
+          <h2>Explore All 7 Seasons</h2>
+          <p>Click any available season card below to jump directly to its episodes.</p>
+        </div>
+
+        <div id="home-seasons-grid" class="seasons-showcase-grid"></div>
+      </div>
+
+      <!-- SOCIAL MEDIA SECTION -->
+      <div id="socials-section-wrapper" class="home-embedded-section">
+        <div class="section-header-title">
+          <h2>Connect With Us</h2>
+          <p>Join our community server or check out the project source code on GitHub.</p>
+        </div>
+
+        <div class="social-grid">
+          <a href="https://discord.com" target="_blank" class="social-card discord-card">
+            <div class="social-icon"><i class="fab fa-discord"></i></div>
+            <div class="social-info">
+              <h3>Discord Community</h3>
+              <p>Join live discussions, Beyblade tournament talk, and custom build showcases.</p>
+            </div>
+            <span class="social-link-btn">Join Server</span>
+          </a>
+
+          <a href="https://github.com" target="_blank" class="social-card github-card">
+            <div class="social-icon"><i class="fab fa-github"></i></div>
+            <div class="social-info">
+              <h3>GitHub Repository</h3>
+              <p>Explore the site repository, view source code, and track recent updates.</p>
+            </div>
+            <span class="social-link-btn">View Repository</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- LIGHTBOX MODAL VIEWER -->
+      <div id="photo-lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+          <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+          <img id="lightbox-img" src="" alt="Enlarged Photo">
+          <h3 id="lightbox-caption"></h3>
+        </div>
+      </div>
+
+      <!-- QUICK FEATURE CARDS -->
+      <div class="feature-grid">
+        <div class="card">
+          <i class="fas fa-tv"></i>
+          <h3>Latest Release</h3>
+          <p>Check out the newly released season content updated regularly.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Community</h3>
+          <p>Join our active channels and connect with other fans online.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-bolt"></i>
+          <h3>Fast Streaming</h3>
+          <p>High quality playback and seamless navigation across tabs.</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>© 2026 Beyblade Burst. All Rights Reserved.</p>
+      </footer>
+    </section>
+
+    <!-- Seasons & Episodes Tab -->
+    <section id="episodes" class="tab-content">
+      <h2>Seasons & Episodes</h2>
+      
+      <div class="season-tabs">
+        <button class="season-btn active" onclick="openSeason(event, 'season-1')">Season 1</button>
+        <button class="season-btn" onclick="openSeason(event, 'season-2')">Season 2</button>
+        <button class="season-btn" onclick="openSeason(event, 'season-3')">Season 3</button>
+        <button class="season-btn" onclick="openSeason(event, 'season-4')">Season 4</button>
+        <button class="season-btn" onclick="openSeason(event, 'season-5')">Season 5</button>
+        <button class="season-btn" onclick="openSeason(event, 'season-6')">Season 6</button>
+        <button class="season-btn" onclick="openSeason(event, 'season-7')">Season 7</button>
+      </div>
+
+      <div id="season-content-container"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
