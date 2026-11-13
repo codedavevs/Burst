@@ -1,47 +1,77 @@
 // ==========================================
 // SEASONS CONFIGURATION & STREAMING LINKS
+// Add your direct .mp4 streaming links inside each episode array!
 // ==========================================
 function getSeasonDetails(seasonNum) {
-  switch (seasonNum) {
-    case 1:
-      return { 
-        name: "Beyblade Burst", 
-        image: "Photos/Beyblade.jpg", 
-        isAvailable: false,
-        episodes: [
-          { epNum: 1, videoUrl: "" }, // Add direct cloud/streaming link here
-          { epNum: 2, videoUrl: "" }
-        ]
-      };
-    case 2:
-      return { 
-        name: "Beyblade Burst Evolution", 
-        image: "Photos/Beyblade Burst Evolution.jpg", 
-        isAvailable: false,
-        episodes: []
-      };
-    case 3:
-      return { 
-        name: "Beyblade Burst Turbo", 
-        image: "Photos/Beyblade Burst Turbo.jpg", 
-        isAvailable: true,
-        episodes: [
-          { epNum: 1, videoUrl: "https://archive.org/download/episode-1_202611/Episode1.mp4" }
-        ]
-      };
-    case 4:
-      return { name: "Beyblade Burst Rise", image: "Photos/Beyblade Burst Rise.jpg", isAvailable: false, episodes: [] };
-    case 5:
-      return { name: "Beyblade Burst Surge", image: "Photos/Beyblade burst surge.jpg", isAvailable: false, episodes: [] };
-    case 6:
-      return { name: "Beyblade Burst QuadDrive", image: "Photos/Beyblade Burst Quad Drive.jpg", isAvailable: false, episodes: [] };
-    case 7:
-      return { name: "Beyblade Burst QuadStrike", image: "Photos/Beyblade Burst Quad Strike.jpg", isAvailable: false, episodes: [] };
-    default:
-      return { name: "Beyblade Burst", image: "Photos/Beyblade.jpg", isAvailable: true, episodes: [] };
-  }
+  const seasonsData = {
+    1: { 
+      name: "Beyblade Burst", 
+      image: "Photos/Beyblade.jpg", 
+      isAvailable: false,
+      episodes: [
+        { epNum: 1, videoUrl: "" },
+        { epNum: 2, videoUrl: "" }
+      ]
+    },
+    2: { 
+      name: "Beyblade Burst Evolution", 
+      image: "Photos/Beyblade Burst Evolution.jpg", 
+      isAvailable: false, // Set to true when ready
+      episodes: [
+        { epNum: 1, videoUrl: "" }
+      ]
+    },
+    3: { 
+      name: "Beyblade Burst Turbo", 
+      image: "Photos/Beyblade Burst Turbo.jpg", 
+      isAvailable: true,
+      episodes: [
+        { epNum: 1, videoUrl: "https://archive.org/download/episode-1_202611/Episode1.mp4" },
+        { epNum: 2, videoUrl: "https://archive.org/download/episode-2_202611/Episode2.mp4" },
+        { epNum: 3, videoUrl: "https://archive.org/download/episode-2_202611/Episode3.mp4" },
+        { epNum: 4, videoUrl: "https://archive.org/download/episode-2_202611/Episode4.mp4" },
+        { epNum: 5, videoUrl: "https://archive.org/download/episode-2_202611/Episode5.mp4" }
+        
+      ]
+    },
+    4: { 
+      name: "Beyblade Burst Rise", 
+      image: "Photos/Beyblade Burst Rise.jpg", 
+      isAvailable: false,
+      episodes: [
+        { epNum: 1, videoUrl: "" }
+      ]
+    },
+    5: { 
+      name: "Beyblade Burst Surge", 
+      image: "Photos/Beyblade burst surge.jpg", 
+      isAvailable: false,
+      episodes: [
+        { epNum: 1, videoUrl: "" }
+      ]
+    },
+    6: { 
+      name: "Beyblade Burst QuadDrive", 
+      image: "Photos/Beyblade Burst Quad Drive.jpg", 
+      isAvailable: false,
+      episodes: [
+        { epNum: 1, videoUrl: "" }
+      ]
+    },
+    7: { 
+      name: "Beyblade Burst QuadStrike", 
+      image: "Photos/Beyblade Burst Quad Strike.jpg", 
+      isAvailable: false,
+      episodes: [
+        { epNum: 1, videoUrl: "" }
+      ]
+    }
+  };
+
+  return seasonsData[seasonNum] || seasonsData[1];
 }
 
+// Initialize website elements on load
 document.addEventListener('DOMContentLoaded', () => {
   renderHomeSeasonsShowcase();
   renderGalleryGrid();
@@ -94,42 +124,38 @@ function renderHomeSeasonsShowcase() {
 }
 
 // ==========================================
-// CHARACTER GALLERY CONFIGURATION (Story & Info)
+// CHARACTER GALLERY DATA & STORY CONFIGURATION
 // Leave image string empty ("") for "No photo available"
 // ==========================================
 function getGalleryCharacterDetails(charKey) {
-  switch (charKey) {
-    case 'valt':
-      return { 
-        name: "Valt Aoi", 
-        image: "Photo Galery/Valt Aoi/Valt.jpg",
-        info: "Age: 11 (Burst) | Beyblade: Valtryek",
-        story: "Valt Aoi is the main protagonist of the Beyblade Burst series. Energetic, passionate, and deeply loyal to his friends, Valt dreams of becoming the world's best Blader alongside his trusty companion, Victory Valtryek."
-      };
-    case 'shu':
-      return { 
-        name: "Shu Kurenai", 
-        image: "Photo Galery/Shu Kurenai/Shu.jpg",
-        info: "Age: 11 (Burst) | Beyblade: Spryzen",
-        story: "Shu Kurenai is a legendary Blader and one of Valt's best friends. Known for his calm, tactical prowess and intense dedication, Shu rises through the ranks as a member of the Supreme Four."
-      };
-    case 'free':
-      return { 
-        name: "Free De La Hoya", 
-        image: "Photo Galery/Free De La Hoya/Free.jpg", // Empty = Triggers No Photo Available state
-        info: "Age: 12 (Evolution) | Beyblade: Fafnir",
-        story: "Free De La Hoya is widely considered the world's strongest Blader. Laid-back and seemingly effortless in his battles, Free possesses extraordinary instincts and spin-stealing mastery with Fafnir."
-      };
-    case 'silas':
-      return { 
-        name: "Silas Karlisle", 
-        image: "Photo Galery/Silas Karlisle/Silas.jpg",
-        info: "Age: 12 (Evolution) | Beyblade: Satomb",
-        story: "Silas Karlisle is a proud, clever Blader known for his unconventional launch techniques and strategic mind. Initially a rival, he becomes a key teammate and fierce competitor in international leagues."
-      };
-    default:
-      return { name: "Character", image: "", info: "", story: "No information available yet." };
-  }
+  const charactersData = {
+    valt: { 
+      name: "Valt Aoi", 
+      image: "Photo Galery/Valt Aoi/Valt.jpg",
+      info: "Beyblade: Valtryek",
+      story: "Valt Aoi is the main protagonist of the Beyblade Burst series. Energetic, passionate, and deeply loyal to his friends, Valt dreams of becoming the world's best Blader alongside his trusty companion, Victory Valtryek."
+    },
+    shu: { 
+      name: "Shu Kurenai", 
+      image: "Photo Galery/Shu Kurenai/Shu.jpg",
+      info: " Beyblade: Spryzen",
+      story: "Shu Kurenai is a legendary Blader and one of Valt's best friends. Known for his calm, tactical prowess and intense dedication, Shu rises through the ranks as a member of the Supreme Four."
+    },
+    free: { 
+      name: "Free De La Hoya", 
+      image: "Photo Galery/Free De La Hoya/Free.jpg", // Empty string = Triggers "No photo available" placeholder state
+      info: "Beyblade: Fafnir",
+      story: "Free De La Hoya is widely considered the world's strongest Blader. Laid-back and seemingly effortless in his battles, Free possesses extraordinary instincts and spin-stealing mastery with Fafnir."
+    },
+    silas: { 
+      name: "Silas Karlisle", 
+      image: "Photo Galery/Silas Karlisle/Silas.jpg",
+      info: "Beyblade: Satomb",
+      story: "Silas Karlisle is a proud, clever Blader known for his unconventional launch techniques and strategic mind. Initially a rival, he becomes a key teammate and fierce competitor in international leagues."
+    }
+  };
+
+  return charactersData[charKey] || { name: "Character", image: "", info: "", story: "No information available yet." };
 }
 
 function renderGalleryGrid() {
@@ -151,7 +177,7 @@ function renderGalleryGrid() {
           </div>
           <div class="gallery-info">
             <h3>${char.name.split(" ")[0]}</h3>
-            <button class="btn btn-primary view-btn" onclick="openLightbox('${char.image}', '${char.name}', '${char.info}', '${char.story}', true)">
+            <button class="btn btn-primary view-btn" onclick="openLightbox('${key}')">
               <i class="fas fa-eye"></i> View
             </button>
           </div>
@@ -166,7 +192,7 @@ function renderGalleryGrid() {
           </div>
           <div class="gallery-info">
             <h3>${char.name}</h3>
-            <button class="btn btn-primary view-btn" onclick="openLightbox('', '${char.name}', '${char.info}', '${char.story}', false)">
+            <button class="btn btn-primary view-btn" onclick="openLightbox('${key}')">
               <i class="fas fa-eye"></i> View
             </button>
           </div>
@@ -182,14 +208,9 @@ function renderGalleryGrid() {
 // TABS & NAVIGATION HANDLERS
 // ==========================================
 function openTab(event, tabId) {
-  const activeVideos = document.querySelectorAll('video');
-  activeVideos.forEach(video => video.pause());
-
-  const contents = document.querySelectorAll('.tab-content');
-  contents.forEach(content => content.classList.remove('active'));
-
-  const buttons = document.querySelectorAll('.tab-btn');
-  buttons.forEach(button => button.classList.remove('active'));
+  document.querySelectorAll('video').forEach(video => video.pause());
+  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(button => button.classList.remove('active'));
 
   document.getElementById(tabId).classList.add('active');
   if (event) {
@@ -200,11 +221,6 @@ function openTab(event, tabId) {
     renderSeason(1);
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function scrollToAbout() {
-  const aboutSection = document.getElementById('about-section-wrapper');
-  if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
 }
 
 function scrollToUpdates() {
@@ -235,11 +251,8 @@ function scrollToSocials() {
 }
 
 function openSeason(event, seasonId) {
-  const activeVideos = document.querySelectorAll('video');
-  activeVideos.forEach(v => v.pause());
-
-  const seasonButtons = document.querySelectorAll('.season-btn');
-  seasonButtons.forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('video').forEach(v => v.pause());
+  document.querySelectorAll('.season-btn').forEach(btn => btn.classList.remove('active'));
 
   event.currentTarget.classList.add('active');
   const seasonNum = parseInt(seasonId.replace('season-', ''));
@@ -297,11 +310,8 @@ function renderSeason(seasonNum) {
 }
 
 function selectEpisode(event, seasonNum, epNum) {
-  const activeVideos = document.querySelectorAll('video');
-  activeVideos.forEach(v => v.pause());
-
-  const epButtons = document.querySelectorAll('.ep-btn');
-  epButtons.forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('video').forEach(v => v.pause());
+  document.querySelectorAll('.ep-btn').forEach(btn => btn.classList.remove('active'));
   event.currentTarget.classList.add('active');
 
   const seasonInfo = getSeasonDetails(seasonNum);
@@ -379,12 +389,14 @@ function goToSeasonAndPlay(seasonNum) {
 // ==========================================
 // CHARACTER LIGHTBOX STORY MODAL VIEWER
 // ==========================================
-function openLightbox(imgSrc, nameText, infoText, storyText, hasPhoto) {
+function openLightbox(charKey) {
+  const char = getGalleryCharacterDetails(charKey);
   const modal = document.getElementById('photo-lightbox');
   const modalContainer = modal.querySelector('.lightbox-content');
   
+  const hasPhoto = char.image && char.image.trim() !== "";
   let imageHTML = hasPhoto 
-    ? `<img src="${imgSrc}" alt="${nameText}" class="lightbox-img">` 
+    ? `<img src="${char.image}" alt="${char.name}" class="lightbox-img">` 
     : `<div class="lightbox-no-photo"><i class="fas fa-image-slash"></i><span>No photo available yet</span></div>`;
 
   modalContainer.innerHTML = `
@@ -394,9 +406,9 @@ function openLightbox(imgSrc, nameText, infoText, storyText, hasPhoto) {
         ${imageHTML}
       </div>
       <div class="lightbox-right">
-        <h2>${nameText}</h2>
-        <span class="lightbox-info-badge">${infoText}</span>
-        <p class="lightbox-story">${storyText}</p>
+        <h2>${char.name}</h2>
+        <span class="lightbox-info-badge">${char.info}</span>
+        <p class="lightbox-story">${char.story}</p>
       </div>
     </div>
   `;
