@@ -1,29 +1,50 @@
 // ==========================================
-// SEASONS CONFIGURATION & AVAILABILITY
+// SEASONS CONFIGURATION & STREAMING LINKS
 // ==========================================
 function getSeasonDetails(seasonNum) {
   switch (seasonNum) {
     case 1:
-      return { name: "Beyblade Burst", folder: "Beyblade Burst", image: "Photos/Beyblade.jpg", totalEpisodes: 26, isAvailable: false };
+      return { 
+        name: "Beyblade Burst", 
+        image: "Photos/Beyblade.jpg", 
+        isAvailable: false,
+        episodes: [
+          { epNum: 1, videoUrl: "" }, // Add direct cloud/streaming link here
+          { epNum: 2, videoUrl: "" }
+        ]
+      };
     case 2:
-      return { name: "Beyblade Burst Evolution", folder: "Beyblade Burst Evolution", image: "Photos/Beyblade Burst Evolution.jpg", totalEpisodes: 26, isAvailable: false };
+      return { 
+        name: "Beyblade Burst Evolution", 
+        image: "Photos/Beyblade Burst Evolution.jpg", 
+        isAvailable: false,
+        episodes: []
+      };
     case 3:
-      return { name: "Beyblade Burst Turbo", folder: "BEYBLADE BURST TURBO", image: "Photos/Beyblade Burst Turbo.jpg", totalEpisodes: 1, isAvailable: false };
+      return { 
+        name: "Beyblade Burst Turbo", 
+        image: "Photos/Beyblade Burst Turbo.jpg", 
+        isAvailable: true,
+        episodes: [
+          { epNum: 1, videoUrl: "https://archive.org/download/episode-1_202611/Episode1.mp4" }
+        ]
+      };
     case 4:
-      return { name: "Beyblade Burst Rise", folder: "BEYBLADE BURST RISE", image: "Photos/Beyblade Burst Rise.jpg", totalEpisodes: 26, isAvailable: false };
+      return { name: "Beyblade Burst Rise", image: "Photos/Beyblade Burst Rise.jpg", isAvailable: false, episodes: [] };
     case 5:
-      return { name: "Beyblade Burst Surge", folder: "BEYBLADE BURST SURGE", image: "Photos/Beyblade burst surge.jpg", totalEpisodes: 26, isAvailable: false };
+      return { name: "Beyblade Burst Surge", image: "Photos/Beyblade burst surge.jpg", isAvailable: false, episodes: [] };
     case 6:
-      return { name: "Beyblade Burst QuadDrive", folder: "Beyblade Burst QuadDrive", image: "Photos/Beyblade Burst Quad Drive.jpg", totalEpisodes: 26, isAvailable: false };
+      return { name: "Beyblade Burst QuadDrive", image: "Photos/Beyblade Burst Quad Drive.jpg", isAvailable: false, episodes: [] };
     case 7:
-      return { name: "Beyblade Burst QuadStrike", folder: "Beyblade Burst QuadStrike", image: "Photos/Beyblade Burst Quad Strike.jpg", totalEpisodes: 26, isAvailable: false };
+      return { name: "Beyblade Burst QuadStrike", image: "Photos/Beyblade Burst Quad Strike.jpg", isAvailable: false, episodes: [] };
     default:
-      return { name: "Beyblade Burst", folder: "Beyblade Burst", image: "Photos/Beyblade.jpg", totalEpisodes: 26, isAvailable: true };
+      return { name: "Beyblade Burst", image: "Photos/Beyblade.jpg", isAvailable: true, episodes: [] };
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   renderHomeSeasonsShowcase();
+  renderGalleryGrid();
   renderSeason(1);
 });
 
@@ -73,14 +94,96 @@ function renderHomeSeasonsShowcase() {
 }
 
 // ==========================================
-// TABS & NAVIGATION HANDLERS (Optimized to prevent lag)
+// CHARACTER GALLERY CONFIGURATION (Story & Info)
+// Leave image string empty ("") for "No photo available"
+// ==========================================
+function getGalleryCharacterDetails(charKey) {
+  switch (charKey) {
+    case 'valt':
+      return { 
+        name: "Valt Aoi", 
+        image: "Photo Galery/Valt Aoi/Valt.jpg",
+        info: "Age: 11 (Burst) | Beyblade: Valtryek",
+        story: "Valt Aoi is the main protagonist of the Beyblade Burst series. Energetic, passionate, and deeply loyal to his friends, Valt dreams of becoming the world's best Blader alongside his trusty companion, Victory Valtryek."
+      };
+    case 'shu':
+      return { 
+        name: "Shu Kurenai", 
+        image: "Photo Galery/Shu Kurenai/Shu.jpg",
+        info: "Age: 11 (Burst) | Beyblade: Spryzen",
+        story: "Shu Kurenai is a legendary Blader and one of Valt's best friends. Known for his calm, tactical prowess and intense dedication, Shu rises through the ranks as a member of the Supreme Four."
+      };
+    case 'free':
+      return { 
+        name: "Free De La Hoya", 
+        image: "Photo Galery/Free De La Hoya/Free.jpg", // Empty = Triggers No Photo Available state
+        info: "Age: 12 (Evolution) | Beyblade: Fafnir",
+        story: "Free De La Hoya is widely considered the world's strongest Blader. Laid-back and seemingly effortless in his battles, Free possesses extraordinary instincts and spin-stealing mastery with Fafnir."
+      };
+    case 'silas':
+      return { 
+        name: "Silas Karlisle", 
+        image: "Photo Galery/Silas Karlisle/Silas.jpg",
+        info: "Age: 12 (Evolution) | Beyblade: Satomb",
+        story: "Silas Karlisle is a proud, clever Blader known for his unconventional launch techniques and strategic mind. Initially a rival, he becomes a key teammate and fierce competitor in international leagues."
+      };
+    default:
+      return { name: "Character", image: "", info: "", story: "No information available yet." };
+  }
+}
+
+function renderGalleryGrid() {
+  const gridContainer = document.getElementById('home-gallery-grid');
+  if (!gridContainer) return;
+
+  const characters = ['valt', 'shu', 'free', 'silas'];
+  let html = '';
+
+  characters.forEach(key => {
+    const char = getGalleryCharacterDetails(key);
+    const hasPhoto = char.image && char.image.trim() !== "";
+
+    if (hasPhoto) {
+      html += `
+        <div class="gallery-card">
+          <div class="gallery-img-container">
+            <img src="${char.image}" alt="${char.name}">
+          </div>
+          <div class="gallery-info">
+            <h3>${char.name.split(" ")[0]}</h3>
+            <button class="btn btn-primary view-btn" onclick="openLightbox('${char.image}', '${char.name}', '${char.info}', '${char.story}', true)">
+              <i class="fas fa-eye"></i> View
+            </button>
+          </div>
+        </div>
+      `;
+    } else {
+      html += `
+        <div class="gallery-card unavailable-gallery-card">
+          <div class="gallery-img-container unavailable-gallery-img">
+            <i class="fas fa-image-slash"></i>
+            <span>No photo available</span>
+          </div>
+          <div class="gallery-info">
+            <h3>${char.name}</h3>
+            <button class="btn btn-primary view-btn" onclick="openLightbox('', '${char.name}', '${char.info}', '${char.story}', false)">
+              <i class="fas fa-eye"></i> View
+            </button>
+          </div>
+        </div>
+      `;
+    }
+  });
+
+  gridContainer.innerHTML = html;
+}
+
+// ==========================================
+// TABS & NAVIGATION HANDLERS
 // ==========================================
 function openTab(event, tabId) {
-  // Pause any playing videos across the document when switching tabs to prevent freezing/lag
   const activeVideos = document.querySelectorAll('video');
-  activeVideos.forEach(video => {
-    video.pause();
-  });
+  activeVideos.forEach(video => video.pause());
 
   const contents = document.querySelectorAll('.tab-content');
   contents.forEach(content => content.classList.remove('active'));
@@ -104,6 +207,24 @@ function scrollToAbout() {
   if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
 }
 
+function scrollToUpdates() {
+  const homeTabBtn = document.querySelector('button[onclick*="home"]');
+  openTab({ currentTarget: homeTabBtn }, 'home');
+  setTimeout(() => {
+    const updatesSection = document.getElementById('updates-section-wrapper');
+    if (updatesSection) updatesSection.scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
+function scrollToGallery() {
+  const homeTabBtn = document.querySelector('button[onclick*="home"]');
+  openTab({ currentTarget: homeTabBtn }, 'home');
+  setTimeout(() => {
+    const gallerySection = document.getElementById('gallery-section-wrapper');
+    if (gallerySection) gallerySection.scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
 function scrollToSocials() {
   const homeTabBtn = document.querySelector('button[onclick*="home"]');
   openTab({ currentTarget: homeTabBtn }, 'home');
@@ -114,7 +235,6 @@ function scrollToSocials() {
 }
 
 function openSeason(event, seasonId) {
-  // Pause active videos before changing seasons
   const activeVideos = document.querySelectorAll('video');
   activeVideos.forEach(v => v.pause());
 
@@ -127,13 +247,13 @@ function openSeason(event, seasonId) {
 }
 
 // ==========================================
-// THUMBNAIL & VIDEO PLAYER MANAGEMENT
+// DYNAMIC EPISODE & VIDEO PLAYER MANAGEMENT
 // ==========================================
 function renderSeason(seasonNum) {
   const container = document.getElementById('season-content-container');
   const seasonInfo = getSeasonDetails(seasonNum);
   
-  if (!seasonInfo.isAvailable) {
+  if (!seasonInfo.isAvailable || !seasonInfo.episodes || seasonInfo.episodes.length === 0) {
     container.innerHTML = `
       <h3 class="episode-grid-title">${seasonInfo.name} - Episodes</h3>
       <div id="episode-viewer" class="episode-display-box">
@@ -149,10 +269,12 @@ function renderSeason(seasonNum) {
   }
 
   let buttonsHTML = '';
-  for (let i = 1; i <= seasonInfo.totalEpisodes; i++) {
-    const activeClass = i === 1 ? 'active' : '';
-    buttonsHTML += `<button class="ep-btn ${activeClass}" onclick="selectEpisode(event, ${seasonNum}, ${i})">E${i}</button>`;
-  }
+  seasonInfo.episodes.forEach((ep, index) => {
+    const activeClass = index === 0 ? 'active' : '';
+    buttonsHTML += `<button class="ep-btn ${activeClass}" onclick="selectEpisode(event, ${seasonNum}, ${ep.epNum})">E${ep.epNum}</button>`;
+  });
+
+  const firstEp = seasonInfo.episodes[0];
 
   container.innerHTML = `
     <h3 class="episode-grid-title">${seasonInfo.name} - Episodes</h3>
@@ -160,14 +282,13 @@ function renderSeason(seasonNum) {
       ${buttonsHTML}
     </div>
     <div id="episode-viewer" class="episode-display-box">
-      <h3>${seasonInfo.name} - Episode 1</h3>
-      <!-- Initial Thumbnail View with Movie-style Play Overlay -->
-      <div class="video-preview-wrapper" onclick="loadAndPlayVideo(${seasonNum}, 1)">
+      <h3>${seasonInfo.name} - Episode ${firstEp.epNum}</h3>
+      <div class="video-preview-wrapper" onclick="loadAndPlayVideo(${seasonNum}, ${firstEp.epNum})">
         <div class="video-thumbnail-container">
-          <img src="${seasonInfo.image}" alt="${seasonInfo.name} Episode 1">
+          <img src="${seasonInfo.image}" alt="${seasonInfo.name} Episode ${firstEp.epNum}">
           <div class="video-thumbnail-overlay">
             <div class="big-play-btn"><i class="fas fa-play"></i></div>
-            <div class="thumbnail-title-hint">${seasonInfo.name} - Episode 1</div>
+            <div class="thumbnail-title-hint">${seasonInfo.name} - Episode ${firstEp.epNum}</div>
           </div>
         </div>
       </div>
@@ -176,7 +297,6 @@ function renderSeason(seasonNum) {
 }
 
 function selectEpisode(event, seasonNum, epNum) {
-  // Pause any existing playing videos
   const activeVideos = document.querySelectorAll('video');
   activeVideos.forEach(v => v.pause());
 
@@ -187,7 +307,6 @@ function selectEpisode(event, seasonNum, epNum) {
   const seasonInfo = getSeasonDetails(seasonNum);
   const viewer = document.getElementById('episode-viewer');
   
-  // Render thumbnail view first before loading actual video payload
   viewer.innerHTML = `
     <h3>${seasonInfo.name} - Episode ${epNum}</h3>
     <div class="video-preview-wrapper" onclick="loadAndPlayVideo(${seasonNum}, ${epNum})">
@@ -202,48 +321,33 @@ function selectEpisode(event, seasonNum, epNum) {
   `;
 }
 
-// Function triggered when clicking the thumbnail: swaps in the actual video player with skip indicators
 function loadAndPlayVideo(seasonNum, epNum) {
   const seasonInfo = getSeasonDetails(seasonNum);
+  const episodeObj = seasonInfo.episodes.find(e => e.epNum === epNum);
+  const videoUrl = episodeObj ? episodeObj.videoUrl : "";
   const viewer = document.getElementById('episode-viewer');
+
+  if (!videoUrl) {
+    viewer.innerHTML = `
+      <h3>${seasonInfo.name} - Episode ${epNum}</h3>
+      <div class="unavailable-video-box">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h4>Video Link Missing</h4>
+        <p>The streaming link for this episode hasn't been added yet.</p>
+      </div>
+    `;
+    return;
+  }
 
   viewer.innerHTML = `
     <h3>${seasonInfo.name} - Episode ${epNum}</h3>
     <div class="video-container" style="position: relative;">
-      <!-- Skip Indicator Feedback Badge -->
-      <div id="skip-indicator-badge" class="skip-indicator">Skipped <span id="skip-time-target">0:00</span></div>
       <video id="active-episode-video" controls width="100%" autoplay preload="auto">
-        <source src="${seasonInfo.folder}/Episode${epNum}.mp4" type="video/mp4">
+        <source src="${videoUrl}" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
   `;
-
-  // Attach skip/seek detection event listener to show indicator when jumping through the video
-  const videoElem = document.getElementById('active-episode-video');
-  const badgeElem = document.getElementById('skip-indicator-badge');
-  const timeTargetElem = document.getElementById('skip-time-target');
-
-  let lastTime = 0;
-  let hideTimeout = null;
-
-  videoElem.addEventListener('timeupdate', () => {
-    // Detects if user skipped forward or backward more than 2 seconds instantly
-    if (Math.abs(videoElem.currentTime - lastTime) > 2.0) {
-      const minutes = Math.floor(videoElem.currentTime / 60);
-      const seconds = Math.floor(videoElem.currentTime % 60);
-      const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-      timeTargetElem.textContent = formattedTime;
-      badgeElem.classList.add('show');
-
-      clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(() => {
-        badgeElem.classList.remove('show');
-      }, 1200);
-    }
-    lastTime = videoElem.currentTime;
-  });
 }
 
 function goToSeasonAndPlay(seasonNum) {
@@ -272,35 +376,32 @@ function goToSeasonAndPlay(seasonNum) {
   }, 50);
 }
 
-// Add this scroll function to script.js:
-function scrollToUpdates() {
-  const homeTabBtn = document.querySelector('button[onclick*="home"]');
-  openTab({ currentTarget: homeTabBtn }, 'home');
-  setTimeout(() => {
-    const updatesSection = document.getElementById('updates-section-wrapper');
-    if (updatesSection) updatesSection.scrollIntoView({ behavior: 'smooth' });
-  }, 50);
-}
-
-// Scroll to Photo Gallery section smoothly from the top navbar
-function scrollToGallery() {
-  const homeTabBtn = document.querySelector('button[onclick*="home"]');
-  openTab({ currentTarget: homeTabBtn }, 'home');
-  setTimeout(() => {
-    const gallerySection = document.getElementById('gallery-section-wrapper');
-    if (gallerySection) gallerySection.scrollIntoView({ behavior: 'smooth' });
-  }, 50);
-}
-
-// Lightbox modal viewer for character photos
-function openLightbox(imgSrc, captionText) {
+// ==========================================
+// CHARACTER LIGHTBOX STORY MODAL VIEWER
+// ==========================================
+function openLightbox(imgSrc, nameText, infoText, storyText, hasPhoto) {
   const modal = document.getElementById('photo-lightbox');
-  const modalImg = document.getElementById('lightbox-img');
-  const caption = document.getElementById('lightbox-caption');
+  const modalContainer = modal.querySelector('.lightbox-content');
+  
+  let imageHTML = hasPhoto 
+    ? `<img src="${imgSrc}" alt="${nameText}" class="lightbox-img">` 
+    : `<div class="lightbox-no-photo"><i class="fas fa-image-slash"></i><span>No photo available yet</span></div>`;
+
+  modalContainer.innerHTML = `
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-body-grid">
+      <div class="lightbox-left">
+        ${imageHTML}
+      </div>
+      <div class="lightbox-right">
+        <h2>${nameText}</h2>
+        <span class="lightbox-info-badge">${infoText}</span>
+        <p class="lightbox-story">${storyText}</p>
+      </div>
+    </div>
+  `;
 
   modal.style.display = 'flex';
-  modalImg.src = imgSrc;
-  caption.textContent = captionText;
 }
 
 function closeLightbox() {

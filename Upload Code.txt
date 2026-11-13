@@ -1,4 +1,4 @@
 git add .
-git commit -m "Updated website design and layout"
+git commit -m "Updated website and Files"
 git push origin burst
 git commit -m "Add design file"

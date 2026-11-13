@@ -14,12 +14,12 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <img src="Photos/beyblade_burst.png" alt="Beyblade Burst Logo" class="nav-logo-img">
+        <img src="Photos/Beyblade_burst.png" alt="Beyblade Burst Logo" class="nav-logo-img">
       </div>
       <div class="nav-tabs">
         <button class="tab-btn active" onclick="openTab(event, 'home')">Home</button>
-        <button class="tab-btn" onclick="scrollToUpdates()">Update Logs</button>
         <button class="tab-btn" onclick="scrollToGallery()">Photo Gallery</button>
+        <button class="tab-btn" onclick="scrollToUpdates()">Update Logs</button>
         <button class="tab-btn" onclick="scrollToSocials()">Social Media</button>
         <button class="tab-btn" onclick="openTab(event, 'episodes')">Seasons & Episodes</button>
       </div>
@@ -47,6 +47,16 @@
             <button class="btn btn-secondary" onclick="scrollToGallery()">Photo Gallery</button>
           </div>
         </div>
+      </div>
+
+      <!-- PHOTO GALLERY SECTION -->
+      <div id="gallery-section-wrapper" class="home-embedded-section">
+        <div class="section-header-title">
+          <h2>Cast and Story.</h2>
+          <p>Check the Story of every character on Beyblade Burst series.</p>
+        </div>
+
+        <div id="home-gallery-grid" class="gallery-grid"></div>
       </div>
 
       <!-- ABOUT SECTION -->
@@ -90,70 +100,11 @@
             </div>
             <h3>Video Schedule Update And Posting</h3>
             <ul class="log-list">
-              <li><i class="fas fa-check-circle"></i> To Be Announced.</li>
+              <li><i class="fas fa-check-circle">
+              </i> Beyblade Burst Turbo Eps1 on Friday - Nov 13</li>
+              <li><i class="fas fa-check-circle">
+              </i> Beyblade Burst Turbo Eps2 on Monday - Nov 16</li>
             </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- NEW: PHOTO GALLERY SECTION (Placed above About Website) -->
-      <div id="gallery-section-wrapper" class="home-embedded-section">
-        <div class="section-header-title">
-          <h2>Character Gallery</h2>
-          <p>Check The Photo Collections In every Character on Beyblade Burst Series.</p>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Character 1: Valt Aoi -->
-          <div class="gallery-card">
-            <div class="gallery-img-container">
-              <img src="Photo Galery/Valt Aoi/Valt.jpg" alt="Valt Aoi">
-            </div>
-            <div class="gallery-info">
-              <h3>Valt</h3>
-              <button class="btn btn-primary view-btn" onclick="openLightbox('Photo Galery/Valt Aoi/ Valt Aoi.jpg', 'Valt Aoi')">
-                <i class="fas fa-eye"></i> View
-              </button>
-            </div>
-          </div>
-
-          <!-- Character 2: Shu Kurenai -->
-          <div class="gallery-card">
-            <div class="gallery-img-container">
-              <img src="Photo Galery/Shu Kurenai/Shu.jpg" alt="Shu Kurenai">
-            </div>
-            <div class="gallery-info">
-              <h3>Shu</h3>
-              <button class="btn btn-primary view-btn" onclick="openLightbox('Photo Galery/Shu Kurenai/Shu Kurenai.jpg', 'Shu Kurenai')">
-                <i class="fas fa-eye"></i> View
-              </button>
-            </div>
-          </div>
-
-          <!-- Character 3: Free De La Hoya -->
-          <div class="gallery-card">
-            <div class="gallery-img-container">
-              <img src="Photo Galery/Free De La Hoya/Free.jpg" alt="Free De La Hoya">
-            </div>
-            <div class="gallery-info">
-              <h3>Free</h3>
-              <button class="btn btn-primary view-btn" onclick="openLightbox('Photo Galery/Free De La Hoya/Free De La Hoya.jpg', 'Free De La Hoya')">
-                <i class="fas fa-eye"></i> View
-              </button>
-            </div>
-          </div>
-
-          <!-- Character 4: Silas Karlisle -->
-          <div class="gallery-card">
-            <div class="gallery-img-container">
-              <img src="Photo Galery/Silas Karlisle/Silas.jpg" alt="Silas Karlisle">
-            </div>
-            <div class="gallery-info">
-              <h3>Silas</h3>
-              <button class="btn btn-primary view-btn" onclick="openLightbox('Photo Galery/Silas Karlisle/Silas Karlisle.jpg', 'Silas Karlisle')">
-                <i class="fas fa-eye"></i> View
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -176,7 +127,7 @@
         </div>
 
         <div class="social-grid">
-          <a href="https://discord.gg/fjdMC4xns" target="_blank" class="social-card discord-card">
+          <a href="https://discord.com" target="_blank" class="social-card discord-card">
             <div class="social-icon"><i class="fab fa-discord"></i></div>
             <div class="social-info">
               <h3>Discord Community</h3>
@@ -185,7 +136,7 @@
             <span class="social-link-btn">Join Server</span>
           </a>
 
-          <a href="https://github.com/codedavevs" target="_blank" class="social-card github-card">
+          <a href="https://github.com" target="_blank" class="social-card github-card">
             <div class="social-icon"><i class="fab fa-github"></i></div>
             <div class="social-info">
               <h3>GitHub Repository</h3>
